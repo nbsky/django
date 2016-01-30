@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 This module houses the GeoIP2 object, a wrapper for the MaxMind GeoIP2(R)
 Python API (http://geoip2.readthedocs.org/). This is an alternative to the

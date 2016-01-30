@@ -1,3 +1,4 @@
+# encoding: utf-8
 import re
 
 # Regular expression for recognizing HEXEWKB and WKT.  A prophylactic measure

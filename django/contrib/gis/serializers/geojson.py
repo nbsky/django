@@ -1,3 +1,4 @@
+# encoding: utf-8
 from __future__ import unicode_literals
 
 from django.contrib.gis.gdal import HAS_GDAL

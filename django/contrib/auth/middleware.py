@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib import auth
 from django.contrib.auth import load_backend
 from django.contrib.auth.backends import RemoteUserBackend

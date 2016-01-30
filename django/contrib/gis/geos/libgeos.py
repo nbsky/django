@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module houses the ctypes initialization procedures, as well
  as the notice and error handler function callbacks (get called

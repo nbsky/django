@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Accessors for related objects.
 

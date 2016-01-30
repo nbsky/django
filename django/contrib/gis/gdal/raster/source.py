@@ -1,3 +1,4 @@
+# encoding: utf-8
 import json
 import os
 from ctypes import addressof, byref, c_double, c_void_p

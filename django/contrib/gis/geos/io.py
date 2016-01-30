@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Module that holds classes for performing I/O operations on GEOS geometry
 objects.  Specifically, this has Python implementations of WKB/WKT

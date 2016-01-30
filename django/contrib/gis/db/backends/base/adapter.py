@@ -1,3 +1,4 @@
+# encoding: utf-8
 class WKTAdapter(object):
     """
     This provides an adaptor for Geometries sent to the

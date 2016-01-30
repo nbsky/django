@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Utility functions for generating "lorem ipsum" Latin text.
 """

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.admin import (
     HORIZONTAL, VERTICAL, AdminSite, ModelAdmin, StackedInline, TabularInline,
     autodiscover, register, site,

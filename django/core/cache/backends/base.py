@@ -1,3 +1,4 @@
+# encoding: utf-8
 "Base Cache class."
 from __future__ import unicode_literals
 

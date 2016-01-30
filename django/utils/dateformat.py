@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 PHP date() style date formatting
 See http://www.php.net/date for format strings

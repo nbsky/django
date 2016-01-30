@@ -1,3 +1,4 @@
+# encoding: utf-8
 # PermWrapper and PermLookupDict proxy the permissions system into objects that
 # the template system can understand.
 

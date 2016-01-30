@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 MySQL database backend for Django.
 

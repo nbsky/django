@@ -1,3 +1,4 @@
+# encoding: utf-8
 from functools import update_wrapper
 
 from django.apps import apps

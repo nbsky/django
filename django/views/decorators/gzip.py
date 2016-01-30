@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.middleware.gzip import GZipMiddleware
 from django.utils.decorators import decorator_from_middleware
 

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from __future__ import unicode_literals
 
 import base64
@@ -137,6 +138,7 @@ class SessionBase(object):
         # To avoid unnecessary persistent storage accesses, we set up the
         # internals directly (loading data wastes time, since we are going to
         # set it to an empty dict anyway).
+        # 清空session其实只是清空内存的session，避免一次数据库连接
         self._session_cache = {}
         self.accessed = True
         self.modified = True
@@ -188,6 +190,7 @@ class SessionBase(object):
         Lazily loads session from storage (unless "no_load" is True, when only
         an empty dict is stored) and stores it in the current instance.
         """
+        #_session_cache是真正储存session的地方，request.session数据最终来自这里
         self.accessed = True
         try:
             return self._session_cache
@@ -195,9 +198,12 @@ class SessionBase(object):
             if self.session_key is None or no_load:
                 self._session_cache = {}
             else:
+                #真正的从储存加载session数据,
                 self._session_cache = self.load()
         return self._session_cache
 
+    #property修饰器，让_get_session变成属性,实际数据在_session_cache,这是一种惰性加载的技巧
+    #除非要访问session数据了，否则session实例不会去加载数据
     _session = property(_get_session)
 
     def get_expiry_age(self, **kwargs):
@@ -288,6 +294,7 @@ class SessionBase(object):
         """
         Removes the current session data from the database and regenerates the
         key.
+        彻底清空,clear只清空内存的session，delete只清空数据库的
         """
         self.clear()
         self.delete()
@@ -296,6 +303,8 @@ class SessionBase(object):
     def cycle_key(self):
         """
         Creates a new session key, while retaining the current session data.
+        保持会话数据，却更换sessionid，什么情况会这样？比如说用户从匿名状态到登录状态这时候会这样处理
+        这是为了一定程度上预防固定会话攻击(Session fixation attack)
         """
         data = self._session_cache
         key = self.session_key
@@ -304,6 +313,7 @@ class SessionBase(object):
         self.delete(key)
 
     # Methods that child classes must implement.
+    # 以下几个涉及具体的存储介质实现，强制要求实现
 
     def exists(self, session_key):
         """

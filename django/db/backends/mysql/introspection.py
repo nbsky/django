@@ -1,3 +1,4 @@
+# encoding: utf-8
 from collections import namedtuple
 
 from MySQLdb.constants import FIELD_TYPE

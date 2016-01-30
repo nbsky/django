@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.db.models.aggregates import StdDev
 from django.db.utils import ProgrammingError
 from django.utils.functional import cached_property

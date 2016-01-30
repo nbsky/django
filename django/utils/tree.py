@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 A class for storing a tree graph. Primarily used for filter constructs in the
 ORM.

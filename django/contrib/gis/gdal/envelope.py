@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  The GDAL/OGR library uses an Envelope structure to hold the bounding
  box information for a geometry.  The envelope (bounding box) contains

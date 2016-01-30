@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Copyright (c) 2007, Robert Coup <robert.coup@onetrackmind.co.nz>
 # All rights reserved.
 #

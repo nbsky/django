@@ -1,3 +1,4 @@
+# encoding: utf-8
 from .base import GEOSBase
 from .prototypes import prepared as capi
 

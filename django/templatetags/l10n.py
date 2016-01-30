@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.template import Library, Node, TemplateSyntaxError
 from django.utils import formats
 from django.utils.encoding import force_text

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.conf import settings
 from django.contrib.sessions.backends.base import SessionBase
 from django.core import signing

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from .shortcuts import get_current_site
 
 

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.db.backends.base.features import BaseDatabaseFeatures
 from django.utils.functional import cached_property
 

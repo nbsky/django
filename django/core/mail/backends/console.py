@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Email backend that writes messages to console instead of sending them.
 """

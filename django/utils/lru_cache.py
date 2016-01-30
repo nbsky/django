@@ -1,3 +1,4 @@
+# encoding: utf-8
 try:
     from functools import lru_cache
 

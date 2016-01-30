@@ -1,3 +1,4 @@
+# encoding: utf-8
 # ACTION_CHECKBOX_NAME is unused, but should stay since its import from here
 # has been referenced in documentation.
 from django.contrib.admin.decorators import register

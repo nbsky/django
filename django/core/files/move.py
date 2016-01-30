@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Move a file in the safest way possible::
 

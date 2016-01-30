@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Creates the default Site object.
 """

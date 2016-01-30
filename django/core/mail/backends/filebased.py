@@ -1,3 +1,4 @@
+# encoding: utf-8
 """Email backend that writes messages to a file."""
 
 import datetime

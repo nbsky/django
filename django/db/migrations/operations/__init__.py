@@ -1,3 +1,4 @@
+# encoding: utf-8
 from .fields import AddField, AlterField, RemoveField, RenameField
 from .models import (
     AlterIndexTogether, AlterModelManagers, AlterModelOptions, AlterModelTable,

@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  The OGRGeometry is a wrapper for using the OGR Geometry class
  (see http://www.gdal.org/ogr/classOGRGeometry.html).  OGRGeometry

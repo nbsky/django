@@ -1,3 +1,4 @@
+# encoding: utf-8
 from ctypes import c_char
 
 from django.contrib.gis.geos.libgeos import (

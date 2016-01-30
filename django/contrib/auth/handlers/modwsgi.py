@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django import db
 from django.contrib import auth
 from django.utils.encoding import force_bytes

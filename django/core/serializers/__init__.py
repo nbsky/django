@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Interfaces for serializing Django objects.
 

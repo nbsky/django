@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.db.backends.mysql.base import \
     DatabaseWrapper as MySQLDatabaseWrapper
 

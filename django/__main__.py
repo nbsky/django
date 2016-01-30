@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Invokes django-admin when the django module is run as a script.
 

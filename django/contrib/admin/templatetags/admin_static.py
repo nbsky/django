@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.template import Library
 from django.templatetags.static import static as _static
 

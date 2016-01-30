@@ -1,3 +1,4 @@
+# encoding: utf-8
 from functools import wraps
 
 from django.utils.cache import patch_vary_headers

@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Management utility to create superusers.
 """

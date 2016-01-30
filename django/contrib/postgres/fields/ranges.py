@@ -1,3 +1,4 @@
+# encoding: utf-8
 import json
 
 from psycopg2.extras import DateRange, DateTimeTZRange, NumericRange, Range

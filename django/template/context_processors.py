@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 A set of request processors that return dictionaries to be merged into a
 template context. Each function takes the request object as its only parameter

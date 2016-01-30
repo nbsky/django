@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Code to manage the creation and SQL rendering of 'where' constraints.
 """

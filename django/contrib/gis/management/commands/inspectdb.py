@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.core.management.commands.inspectdb import \
     Command as InspectDBCommand
 

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from ctypes import c_void_p
 
 from django.contrib.gis.geos.error import GEOSException

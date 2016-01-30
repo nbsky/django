@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Dummy database backend for Django.
 

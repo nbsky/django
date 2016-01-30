@@ -1,3 +1,5 @@
+# encoding: utf-8
+# encoding: utf-8
 from __future__ import unicode_literals
 
 import copy
@@ -207,6 +209,7 @@ class HttpRequest(object):
         return self.scheme == 'https'
 
     def is_ajax(self):
+        #X-Requested-With是jQuery发送ajax请求自己加上去的自定义header没有在rfc
         return self.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
     @property

@@ -1,3 +1,4 @@
+# encoding: utf-8
 "Misc. utility functions/classes for admin documentation generator."
 
 import re

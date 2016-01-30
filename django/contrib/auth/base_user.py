@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 This module allows importing AbstractBaseUser even when django.contrib.auth is
 not in INSTALLED_APPS.

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.apps import apps
 from django.db import DEFAULT_DB_ALIAS, router
 from django.utils import six

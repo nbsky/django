@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.views.generic.base import RedirectView, TemplateView, View
 from django.views.generic.dates import (
     ArchiveIndexView, DateDetailView, DayArchiveView, MonthArchiveView,

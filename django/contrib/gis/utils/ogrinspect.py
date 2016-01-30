@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 This module is for inspecting OGR data sources and generating either
 models for GeoDjango and/or mapping dictionaries for use with the

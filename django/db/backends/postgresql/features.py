@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.db.backends.base.features import BaseDatabaseFeatures
 from django.db.utils import InterfaceError
 

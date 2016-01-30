@@ -1,3 +1,4 @@
+# encoding: utf-8
 "This is the locale selecting middleware that will look at accept headers"
 
 from django.conf import settings

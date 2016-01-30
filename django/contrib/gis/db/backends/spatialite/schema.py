@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.db.backends.sqlite3.schema import DatabaseSchemaEditor
 from django.db.utils import DatabaseError
 

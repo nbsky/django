@@ -1,3 +1,4 @@
+# encoding: utf-8
 import functools
 
 from django.http import HttpRequest

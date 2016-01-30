@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Django's standard crypto functions and utilities.
 """

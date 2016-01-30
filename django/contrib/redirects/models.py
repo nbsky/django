@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.sites.models import Site
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible

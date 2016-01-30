@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 This module converts requested URLs to callback view functions.
 

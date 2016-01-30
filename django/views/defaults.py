@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django import http
 from django.template import Context, Engine, TemplateDoesNotExist, loader
 from django.utils import six

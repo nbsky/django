@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Module for abstract serializer/unserializer base classes.
 """

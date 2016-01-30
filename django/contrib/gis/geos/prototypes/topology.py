@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module houses the GEOS ctypes prototype functions for the
  topological operations on geometries.

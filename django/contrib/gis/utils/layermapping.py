@@ -1,3 +1,4 @@
+# encoding: utf-8
 # LayerMapping -- A Django Model/OGR Layer Mapping Utility
 """
  The LayerMapping class provides a way to map the contents of OGR

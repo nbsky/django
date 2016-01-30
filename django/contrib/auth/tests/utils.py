@@ -1,3 +1,4 @@
+# encoding: utf-8
 import warnings
 from unittest import skipIf
 

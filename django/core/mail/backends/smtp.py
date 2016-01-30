@@ -1,3 +1,4 @@
+# encoding: utf-8
 """SMTP email backend class."""
 import smtplib
 import ssl

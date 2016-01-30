@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.db import (
     DEFAULT_DB_ALIAS, DatabaseError, Error, ProgrammingError, connections,
 )

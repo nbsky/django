@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Syndication feed generation library -- used for generating RSS, etc.
 

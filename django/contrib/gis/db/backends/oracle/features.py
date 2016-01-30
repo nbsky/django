@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.gis.db.backends.base.features import BaseSpatialFeatures
 from django.db.backends.oracle.features import \
     DatabaseFeatures as OracleDatabaseFeatures

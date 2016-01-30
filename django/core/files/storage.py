@@ -1,3 +1,4 @@
+# encoding: utf-8
 import errno
 import os
 from datetime import datetime

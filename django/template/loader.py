@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.utils import six
 from django.utils.deprecation import (
     DeprecationInstanceCheck, RemovedInDjango20Warning,

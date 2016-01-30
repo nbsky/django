@@ -1,3 +1,4 @@
+# encoding: utf-8
 # -*- coding: utf-8 -*-
 """
 Base classes for writing management commands (named commands which can

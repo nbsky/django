@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.apps import apps
 from django.dispatch import Signal
 from django.utils import six

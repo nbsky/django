@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.db.backends.base.schema import BaseDatabaseSchemaEditor
 from django.db.models import NOT_PROVIDED
 

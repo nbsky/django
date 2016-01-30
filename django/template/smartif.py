@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Parser and utilities for the smart 'if' tag
 """

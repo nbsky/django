@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module contains useful utilities for GeoDjango.
 """

@@ -1,3 +1,4 @@
+# encoding: utf-8
 """Translation helper functions."""
 from __future__ import unicode_literals
 

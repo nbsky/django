@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.apps import AppConfig
 from django.contrib.auth.checks import check_user_model
 from django.core import checks

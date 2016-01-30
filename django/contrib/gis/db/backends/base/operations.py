@@ -1,3 +1,4 @@
+# encoding: utf-8
 class BaseSpatialOperations(object):
     """
     This module holds the base `BaseSpatialBackend` object, which is

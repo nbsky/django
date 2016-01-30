@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.gis.geos.geometry import GEOSGeometry, hex_regex, wkt_regex
 from django.utils import six
 

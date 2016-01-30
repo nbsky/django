@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.apps import AppConfig
 from django.contrib.admin.checks import check_admin_app, check_dependencies
 from django.core import checks

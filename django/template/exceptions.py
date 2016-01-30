@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 This module contains generic exceptions used by template backends. Although,
 due to historical reasons, the Django template language also internally uses

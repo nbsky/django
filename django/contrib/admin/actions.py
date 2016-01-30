@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Built-in, globally-available admin actions.
 """

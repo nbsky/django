@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Serialize data to/from JSON
 """

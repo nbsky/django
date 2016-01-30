@@ -1,3 +1,4 @@
+# encoding: utf-8
 import os
 from ctypes import CDLL
 from ctypes.util import find_library

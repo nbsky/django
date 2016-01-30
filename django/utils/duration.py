@@ -1,3 +1,4 @@
+# encoding: utf-8
 """Version of str(timedelta) which is not English specific."""
 
 

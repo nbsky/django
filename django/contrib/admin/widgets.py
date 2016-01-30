@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Form Widget classes specific to the Django admin site.
 """

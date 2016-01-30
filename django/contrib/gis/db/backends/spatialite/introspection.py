@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.gis.gdal import OGRGeomType
 from django.db.backends.sqlite3.introspection import (
     DatabaseIntrospection, FlexibleFieldLookupDict,

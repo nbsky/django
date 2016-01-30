@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Based on "python-archive" -- http://pypi.python.org/pypi/python-archive/
 

@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 SQL functions reference lists:
 http://www.gaia-gis.it/spatialite-3.0.0-BETA/spatialite-sql-3.0.0.html

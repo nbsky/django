@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Useful auxiliary data structures for query construction. Not useful outside
 the SQL domain.

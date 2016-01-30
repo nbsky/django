@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 The temp module provides a NamedTemporaryFile that can be reopened in the same
 process on any platform. Most platforms use the standard Python

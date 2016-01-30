@@ -1,3 +1,4 @@
+# encoding: utf-8
 import gettext as gettext_module
 import importlib
 import json

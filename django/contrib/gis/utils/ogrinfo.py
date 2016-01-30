@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 This module includes some utility functions for inspecting the layout
 of a GDAL data source -- the functionality is analogous to the output

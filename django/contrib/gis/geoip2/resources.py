@@ -1,3 +1,4 @@
+# encoding: utf-8
 def City(response):
     return {
         'city': response.city.name,

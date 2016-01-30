@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 The SpatialProxy object allows for lazy-geometries and lazy-rasters. The proxy
 uses Python descriptors for instantiating and setting Geometry or Raster

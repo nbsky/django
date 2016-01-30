@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module contains functions that generate ctypes prototypes for the
  GDAL routines.

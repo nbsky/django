@@ -1,3 +1,4 @@
+# encoding: utf-8
 "Memcached cache backend"
 
 import pickle

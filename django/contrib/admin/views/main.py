@@ -1,3 +1,4 @@
+# encoding: utf-8
 import sys
 from collections import OrderedDict
 

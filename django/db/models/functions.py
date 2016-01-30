@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Classes that represent database functions.
 """

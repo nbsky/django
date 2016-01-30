@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Create SQL statements for QuerySets.
 

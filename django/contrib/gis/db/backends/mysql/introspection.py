@@ -1,3 +1,4 @@
+# encoding: utf-8
 from MySQLdb.constants import FIELD_TYPE
 
 from django.contrib.gis.gdal import OGRGeomType

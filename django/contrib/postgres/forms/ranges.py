@@ -1,3 +1,4 @@
+# encoding: utf-8
 from psycopg2.extras import DateRange, DateTimeTZRange, NumericRange
 
 from django import forms

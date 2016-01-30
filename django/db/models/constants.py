@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Constants used across the ORM in general.
 """

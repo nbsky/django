@@ -1,3 +1,4 @@
+# encoding: utf-8
 "Thread-safe in-memory cache backend."
 
 import time

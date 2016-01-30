@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  Error checking functions for GEOS ctypes prototype functions.
 """

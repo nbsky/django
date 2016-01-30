@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.gis.db.models.fields import GeometryField
 from django.db.backends.oracle.schema import DatabaseSchemaEditor
 from django.db.backends.utils import truncate_name

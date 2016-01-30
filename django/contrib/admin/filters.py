@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 This encapsulates the logic for displaying filters in the Django admin.
 Filters are specified in models with the "list_filter" option.

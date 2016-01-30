@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module houses the GEOSCoordSeq object, which is used internally
  by GEOSGeometry to house the actual coordinates of the Point,

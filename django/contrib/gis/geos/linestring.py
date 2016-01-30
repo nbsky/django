@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.gis.geos import prototypes as capi
 from django.contrib.gis.geos.coordseq import GEOSCoordSeq
 from django.contrib.gis.geos.error import GEOSException

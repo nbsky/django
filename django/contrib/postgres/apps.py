@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.apps import AppConfig
 from django.db.backends.signals import connection_created
 from django.db.models import CharField, TextField

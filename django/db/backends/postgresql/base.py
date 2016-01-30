@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 PostgreSQL database backend for Django.
 

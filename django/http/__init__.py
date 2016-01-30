@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.http.cookie import SimpleCookie, parse_cookie
 from django.http.request import (
     HttpRequest, QueryDict, RawPostDataException, UnreadablePostError,

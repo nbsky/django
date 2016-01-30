@@ -1,3 +1,4 @@
+# encoding: utf-8
 import warnings
 from ctypes import c_uint
 

@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module houses the GeoIP object, a ctypes wrapper for the MaxMind GeoIP(R)
  C API (http://www.maxmind.com/app/c).  This is an alternative to the GPL

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from importlib import import_module
 
 from django.utils.version import get_docs_version

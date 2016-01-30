@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.gis.gdal import SpatialReference
 from django.db import DEFAULT_DB_ALIAS, connections
 

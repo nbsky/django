@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.sitemaps import ping_google
 from django.core.management.base import BaseCommand
 

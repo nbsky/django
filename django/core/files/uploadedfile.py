@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Classes representing uploaded files.
 """

@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Various data structures used in query construction.
 

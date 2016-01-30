@@ -1,3 +1,4 @@
+# encoding: utf-8
 import cgi
 import errno
 import mimetypes

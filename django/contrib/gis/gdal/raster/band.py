@@ -1,3 +1,4 @@
+# encoding: utf-8
 import math
 from ctypes import byref, c_double, c_int, c_void_p
 

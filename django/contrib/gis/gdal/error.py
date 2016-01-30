@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module houses the GDAL & SRS Exception objects, and the
  check_err() routine which checks the status code returned by

@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Helper functions for creating Form classes from Django models
 and database field objects.

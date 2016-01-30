@@ -1,3 +1,4 @@
+# encoding: utf-8
 import datetime
 from calendar import timegm
 from functools import wraps

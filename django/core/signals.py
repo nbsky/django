@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.dispatch import Signal
 
 request_started = Signal(providing_args=["environ"])

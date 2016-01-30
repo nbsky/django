@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  DataSource is a wrapper for the OGR Data Source object, which provides
  an interface for reading vector geometry data from many different file

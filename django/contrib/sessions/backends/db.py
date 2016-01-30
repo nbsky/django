@@ -1,3 +1,4 @@
+# encoding: utf-8
 import logging
 
 from django.contrib.sessions.backends.base import CreateError, SessionBase
@@ -11,6 +12,7 @@ from django.utils.functional import cached_property
 class SessionStore(SessionBase):
     """
     Implements database session store.
+    实现数据库作为存储介质
     """
     def __init__(self, session_key=None):
         super(SessionStore, self).__init__(session_key)

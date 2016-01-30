@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Extracts the version of the PostgreSQL server.
 """

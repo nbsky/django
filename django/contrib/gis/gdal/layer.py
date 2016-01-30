@@ -1,3 +1,4 @@
+# encoding: utf-8
 from ctypes import byref, c_double
 
 from django.contrib.gis.gdal.base import GDALBase

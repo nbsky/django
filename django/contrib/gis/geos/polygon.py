@@ -1,3 +1,4 @@
+# encoding: utf-8
 from ctypes import byref, c_uint
 
 from django.contrib.gis.geos import prototypes as capi

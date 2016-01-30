@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 This module holds simple classes to convert geospatial values from the
 database.

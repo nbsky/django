@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.apps import apps as django_apps
 from django.contrib.sitemaps import Sitemap
 from django.core.exceptions import ImproperlyConfigured

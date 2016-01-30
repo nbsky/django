@@ -1,3 +1,4 @@
+# encoding: utf-8
 import threading
 
 from django.contrib.gis.geos.libgeos import (

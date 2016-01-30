@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.db.models.lookups import (
     Exact, GreaterThan, GreaterThanOrEqual, In, IsNull, LessThan,
     LessThanOrEqual,

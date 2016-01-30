@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module houses the Geometry Collection objects:
  GeometryCollection, MultiPoint, MultiLineString, and MultiPolygon

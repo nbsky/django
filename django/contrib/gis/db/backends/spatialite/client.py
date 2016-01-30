@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.db.backends.sqlite3.client import DatabaseClient
 
 

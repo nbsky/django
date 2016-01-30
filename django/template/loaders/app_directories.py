@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Wrapper for loading templates from "templates" directories in INSTALLED_APPS
 packages.

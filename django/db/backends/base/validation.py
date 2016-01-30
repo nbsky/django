@@ -1,3 +1,4 @@
+# encoding: utf-8
 class BaseDatabaseValidation(object):
     """
     This class encapsulates all backend-specific model validation.

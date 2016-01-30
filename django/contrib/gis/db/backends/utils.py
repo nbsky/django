@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 A collection of utility routines and classes used by the spatial
 backends.

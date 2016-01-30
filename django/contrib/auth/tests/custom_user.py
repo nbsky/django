@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.auth.models import (
     AbstractBaseUser, AbstractUser, BaseUserManager, Group, Permission,
     PermissionsMixin, UserManager,

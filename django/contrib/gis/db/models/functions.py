@@ -1,3 +1,4 @@
+# encoding: utf-8
 from decimal import Decimal
 
 from django.contrib.gis.db.models.fields import GeometryField

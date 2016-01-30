@@ -1,3 +1,4 @@
+# encoding: utf-8
 from collections import Counter, OrderedDict
 from operator import attrgetter
 

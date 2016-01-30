@@ -1,3 +1,4 @@
+# encoding: utf-8
 from functools import wraps
 
 from django.middleware.cache import CacheMiddleware

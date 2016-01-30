@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Tools for sending email.
 """

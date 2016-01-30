@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.conf import settings
 from django.core.cache import caches
 from django.core.cache.backends.db import BaseDatabaseCache

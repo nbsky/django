@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Global Django exception and warning classes.
 """

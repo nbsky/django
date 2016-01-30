@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.conf import settings
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.contrib.auth.views import redirect_to_login

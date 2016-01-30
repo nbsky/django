@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Portable file locking utilities.
 

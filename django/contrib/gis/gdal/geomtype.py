@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.gis.gdal.error import GDALException
 from django.utils import six
 

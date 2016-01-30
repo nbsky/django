@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Decorators for views based on HTTP headers.
 """

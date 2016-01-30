@@ -1,3 +1,4 @@
+# encoding: utf-8
 class BaseDatabaseClient(object):
     """
     This class encapsulates all backend-specific methods for opening a

@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 This module allows importing AbstractBaseSession even
 when django.contrib.sessions is not in INSTALLED_APPS.

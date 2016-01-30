@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Django validation and HTML form handling.
 """

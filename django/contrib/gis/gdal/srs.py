@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
   The Spatial Reference class, represents OGR Spatial Reference objects.
 

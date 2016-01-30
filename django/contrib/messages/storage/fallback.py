@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.messages.storage.base import BaseStorage
 from django.contrib.messages.storage.cookie import CookieStorage
 from django.contrib.messages.storage.session import SessionStorage

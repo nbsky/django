@@ -1,3 +1,4 @@
+# encoding: utf-8
 """HTML utilities suitable for global use."""
 
 from __future__ import unicode_literals

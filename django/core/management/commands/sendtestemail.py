@@ -1,3 +1,4 @@
+# encoding: utf-8
 import socket
 
 from django.core.mail import mail_admins, mail_managers, send_mail

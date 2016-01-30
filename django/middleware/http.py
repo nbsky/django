@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.utils.cache import get_conditional_response
 from django.utils.http import http_date, parse_http_date_safe, unquote_etag
 

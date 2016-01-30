@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module contains the 'base' GEOSGeometry object -- all GEOS Geometries
  inherit from this object.

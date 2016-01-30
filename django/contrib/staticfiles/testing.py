@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.staticfiles.handlers import StaticFilesHandler
 from django.test import LiveServerTestCase
 

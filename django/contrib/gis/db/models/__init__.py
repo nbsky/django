@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.db.models import *  # NOQA isort:skip
 from django.contrib.gis.db.models.aggregates import *  # NOQA
 from django.contrib.gis.db.models.fields import (  # NOQA

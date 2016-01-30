@@ -1,3 +1,4 @@
+# encoding: utf-8
 DEBUG = 10
 INFO = 20
 SUCCESS = 25

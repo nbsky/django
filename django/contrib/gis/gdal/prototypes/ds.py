@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module houses the ctypes function prototypes for OGR DataSource
  related data structures. OGR_Dr_*, OGR_DS_*, OGR_L_*, OGR_F_*,

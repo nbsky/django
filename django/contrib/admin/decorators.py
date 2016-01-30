@@ -1,3 +1,4 @@
+# encoding: utf-8
 def register(*models, **kwargs):
     """
     Registers the given model(s) classes and wrapped ModelAdmin class with

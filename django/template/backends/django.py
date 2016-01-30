@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Since this package contains a "django" module, this is required on Python 2.
 from __future__ import absolute_import
 

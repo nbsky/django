@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Functions for creating and restoring url-safe signed JSON objects.
 

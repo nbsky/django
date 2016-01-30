@@ -1,3 +1,4 @@
+# encoding: utf-8
 "Dummy cache backend"
 
 from django.core.cache.backends.base import DEFAULT_TIMEOUT, BaseCache

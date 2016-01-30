@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.messages import constants
 from django.contrib.messages.storage import default_storage
 from django.http import HttpRequest

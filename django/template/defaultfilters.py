@@ -1,3 +1,4 @@
+# encoding: utf-8
 """Default variable filters."""
 from __future__ import unicode_literals
 

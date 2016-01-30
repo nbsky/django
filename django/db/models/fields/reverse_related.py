@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 "Rel objects" for related fields.
 

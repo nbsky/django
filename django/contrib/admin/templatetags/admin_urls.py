@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django import template
 from django.contrib.admin.utils import quote
 from django.urls import Resolver404, get_script_prefix, resolve

@@ -1,3 +1,4 @@
+# encoding: utf-8
 def topological_sort_as_sets(dependency_graph):
     """Variation of Kahn's algorithm (1962) that returns sets.
 

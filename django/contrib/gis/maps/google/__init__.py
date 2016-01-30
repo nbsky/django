@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
   This module houses the GoogleMap object, used for generating
    the needed javascript to embed Google Maps in a Web page.

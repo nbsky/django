@@ -1,3 +1,4 @@
+# encoding: utf-8
 "Functions that help with dynamically creating decorators for views."
 
 try:

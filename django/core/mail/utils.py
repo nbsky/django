@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Email message and email sending related helper functions.
 """

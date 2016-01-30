@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.core import checks
 from django.db.backends.base.validation import BaseDatabaseValidation
 

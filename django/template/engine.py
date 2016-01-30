@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.core.exceptions import ImproperlyConfigured
 from django.utils import lru_cache, six
 from django.utils.functional import cached_property

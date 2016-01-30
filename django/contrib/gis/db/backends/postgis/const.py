@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 PostGIS to GDAL conversion constant definitions
 """

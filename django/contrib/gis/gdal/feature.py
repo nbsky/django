@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.gis.gdal.base import GDALBase
 from django.contrib.gis.gdal.error import GDALException, OGRIndexError
 from django.contrib.gis.gdal.field import Field

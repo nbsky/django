@@ -1,3 +1,4 @@
+# encoding: utf-8
 import copy
 import inspect
 from importlib import import_module

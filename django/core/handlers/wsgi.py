@@ -1,3 +1,5 @@
+# encoding: utf-8
+# encoding: utf-8
 from __future__ import unicode_literals
 
 import cgi
@@ -78,6 +80,9 @@ class LimitedStream(object):
 
 
 class WSGIRequest(http.HttpRequest):
+    """
+        init实现了wsgi的environ对 request的数据填充
+    """
     def __init__(self, environ):
         script_name = get_script_name(environ)
         path_info = get_path_info(environ)
@@ -150,6 +155,13 @@ class WSGIHandler(base.BaseHandler):
     initLock = Lock()
     request_class = WSGIRequest
 
+    """
+        wsgi的实现,这里可以算是整个django的入口了
+        WSGIHandler 最终被谁调用呢？就是被wsgi服务器,所以其实wsgi并非是网络协议他是很像java servlet的一种函数调用约定而已
+        environ:一个包含所有HTTP请求信息的dict对象,浏览器的数据传给web服务器，web服务器把请求封装成eviron字典
+        start_response:要求调用一次，有两个参数，一个是状态码,如'200 OK'，一个是header[('Content-Type', 'text/html')]那body呢
+        body由return负责,return一个可迭代对象
+    """
     def __call__(self, environ, start_response):
         # Set up middleware if needed. We couldn't do this earlier, because
         # settings weren't available.
@@ -162,6 +174,7 @@ class WSGIHandler(base.BaseHandler):
         set_script_prefix(get_script_name(environ))
         signals.request_started.send(sender=self.__class__, environ=environ)
         try:
+            #这一步完成了wsgi的environ原始的数据的封装，封装成了django定义的request对象,把各种header body打包进request
             request = self.request_class(environ)
         except UnicodeDecodeError:
             logger.warning('Bad Request (UnicodeDecodeError)',
@@ -172,17 +185,23 @@ class WSGIHandler(base.BaseHandler):
             )
             response = http.HttpResponseBadRequest()
         else:
+            #request进去response出来,response并不能直接返回，按照wsgi，把response拆成(http body)和(status code + header)两部分
             response = self.get_response(request)
 
         response._handler_class = self.__class__
 
+        #剥离出status code
         status = '%s %s' % (response.status_code, response.reason_phrase)
+        #剥离出headers
         response_headers = [(str(k), str(v)) for k, v in response.items()]
+        #header加上set-cookies,其实也是header的一部分，只是response单独放cookies属性里面
         for c in response.cookies.values():
             response_headers.append((str('Set-Cookie'), str(c.output(header=''))))
+        #wsgi第一步:实现了包含http状态码和header两个参数的函数调用完成了wsgi的其中一步
         start_response(force_str(status), response_headers)
         if getattr(response, 'file_to_stream', None) is not None and environ.get('wsgi.file_wrapper'):
             response = environ['wsgi.file_wrapper'](response.file_to_stream)
+        #wsgi第二步:返回可迭代body
         return response
 
 

@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Wrapper for loading templates from eggs via pkg_resources.resource_string.
 from __future__ import unicode_literals
 

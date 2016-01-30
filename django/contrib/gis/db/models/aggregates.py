@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.gis.db.models.fields import ExtentField
 from django.db.models.aggregates import Aggregate
 

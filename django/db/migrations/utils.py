@@ -1,3 +1,4 @@
+# encoding: utf-8
 import re
 
 COMPILED_REGEX_TYPE = type(re.compile(''))

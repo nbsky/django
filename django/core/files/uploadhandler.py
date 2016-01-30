@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Base file upload handler classes, and the built-in concrete subclasses
 """

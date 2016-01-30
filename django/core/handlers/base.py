@@ -1,3 +1,5 @@
+# encoding: utf-8
+# encoding: utf-8
 from __future__ import unicode_literals
 
 import logging
@@ -39,7 +41,7 @@ class BaseHandler(object):
     def load_middleware(self):
         """
         Populate middleware lists from settings.MIDDLEWARE_CLASSES.
-
+        从settings.MIDDLEWARE_CLASSES 收集中间件的方法到下面各个数组
         Must be called after the environment is fixed (see __call__ in subclasses).
         """
         self._view_middleware = []
@@ -120,6 +122,7 @@ class BaseHandler(object):
         try:
             response = None
             # Apply request middleware
+            # 第一个被执行的中间件是request_middleware
             for middleware_method in self._request_middleware:
                 response = middleware_method(request)
                 if response:

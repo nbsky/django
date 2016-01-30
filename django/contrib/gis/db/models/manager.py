@@ -1,3 +1,4 @@
+# encoding: utf-8
 import warnings
 
 from django.contrib.gis.db.models.query import GeoQuerySet

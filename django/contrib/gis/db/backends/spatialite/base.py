@@ -1,3 +1,4 @@
+# encoding: utf-8
 import sys
 from ctypes.util import find_library
 

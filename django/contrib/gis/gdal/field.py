@@ -1,3 +1,4 @@
+# encoding: utf-8
 from ctypes import byref, c_int
 from datetime import date, datetime, time
 

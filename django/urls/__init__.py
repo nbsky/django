@@ -1,3 +1,4 @@
+# encoding: utf-8
 from .base import (
     clear_script_prefix, clear_url_caches, get_script_prefix, get_urlconf,
     is_valid_path, resolve, reverse, reverse_lazy, set_script_prefix,

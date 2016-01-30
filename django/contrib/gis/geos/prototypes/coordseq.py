@@ -1,3 +1,4 @@
+# encoding: utf-8
 from ctypes import POINTER, c_double, c_int, c_uint
 
 from django.contrib.gis.geos.libgeos import CS_PTR, GEOM_PTR, GEOSFuncFactory

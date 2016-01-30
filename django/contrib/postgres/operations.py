@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.postgres.signals import register_hstore_handler
 from django.db.migrations.operations.base import Operation
 

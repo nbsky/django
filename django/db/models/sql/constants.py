@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Constants specific to the SQL storage portion of the ORM.
 """

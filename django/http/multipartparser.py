@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Multi-part parsing for file uploads.
 

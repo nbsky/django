@@ -1,3 +1,4 @@
+# encoding: utf-8
 import django
 from django.core.handlers.wsgi import WSGIHandler
 

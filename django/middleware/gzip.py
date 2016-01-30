@@ -1,3 +1,4 @@
+# encoding: utf-8
 import re
 
 from django.utils.cache import patch_vary_headers

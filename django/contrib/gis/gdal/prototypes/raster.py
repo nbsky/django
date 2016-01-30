@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 This module houses the ctypes function prototypes for GDAL DataSource (raster)
 related data structures.

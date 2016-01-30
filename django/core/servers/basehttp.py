@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 HTTP server that implements the Python WSGI protocol (PEP 333, rev 1.21).
 

@@ -1,3 +1,4 @@
+# encoding: utf-8
 # This code was mostly based on ipaddr-py
 # Copyright 2007 Google Inc. https://github.com/google/ipaddr-py
 # Licensed under the Apache License, Version 2.0 (the "License").

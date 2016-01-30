@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.conf import settings
 from django.contrib.staticfiles.handlers import StaticFilesHandler
 from django.core.management.commands.runserver import \

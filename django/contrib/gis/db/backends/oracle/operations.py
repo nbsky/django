@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module contains the spatial lookup types, and the `get_geo_where_clause`
  routine for Oracle Spatial.

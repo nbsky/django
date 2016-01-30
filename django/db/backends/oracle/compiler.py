@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.db.models.sql import compiler
 
 

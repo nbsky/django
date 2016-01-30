@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib.gis import forms
 from django.contrib.gis.db.models.lookups import gis_lookups
 from django.contrib.gis.db.models.proxy import SpatialProxy

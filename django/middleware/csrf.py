@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Cross Site Request Forgery Middleware.
 

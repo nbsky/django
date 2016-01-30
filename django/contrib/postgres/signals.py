@@ -1,3 +1,4 @@
+# encoding: utf-8
 from psycopg2 import ProgrammingError
 from psycopg2.extras import register_hstore
 

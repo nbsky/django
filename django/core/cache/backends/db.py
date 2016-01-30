@@ -1,3 +1,4 @@
+# encoding: utf-8
 "Database cache backend."
 import base64
 from datetime import datetime

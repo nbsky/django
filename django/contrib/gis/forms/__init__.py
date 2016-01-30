@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.forms import *  # NOQA
 
 from .fields import (  # NOQA

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.contrib import admin
 from django.contrib.flatpages.forms import FlatpageForm
 from django.contrib.flatpages.models import FlatPage

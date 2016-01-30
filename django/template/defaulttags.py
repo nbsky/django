@@ -1,3 +1,4 @@
+# encoding: utf-8
 """Default tags used by the template system, available to all templates."""
 from __future__ import unicode_literals
 

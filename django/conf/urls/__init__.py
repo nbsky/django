@@ -1,3 +1,4 @@
+# encoding: utf-8
 import warnings
 from importlib import import_module
 

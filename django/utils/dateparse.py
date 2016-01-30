@@ -1,3 +1,4 @@
+# encoding: utf-8
 """Functions to parse datetime objects."""
 
 # We're using regular expressions rather than time.strptime because:

@@ -1,3 +1,4 @@
+# encoding: utf-8
 import inspect
 import re
 
@@ -98,6 +99,9 @@ def login(request, user, backend=None):
     if hasattr(user, 'get_session_auth_hash'):
         session_auth_hash = user.get_session_auth_hash()
 
+    # session已经保存了用户id,当然这里不能保证是当前用户的用户id，
+    # 如果是当前用户id，密码也可能已经变了,这两种情况都彻底清空session
+    # 这里的hSESSION_KEY是session中user_id的键值
     if SESSION_KEY in request.session:
         if _get_user_session_key(request) != user.pk or (
                 session_auth_hash and
@@ -107,6 +111,8 @@ def login(request, user, backend=None):
             # authenticated user.
             request.session.flush()
     else:
+        #session没有保存用户id，也就是如果用户从匿名状态登录到非匿名，sessionid会刷新，但是session的其他数据不会丢失
+        #cycle_key 维持session的数据不变，但是更改sessionid
         request.session.cycle_key()
 
     try:
@@ -121,7 +127,9 @@ def login(request, user, backend=None):
                 'therefore must provide the `backend` argument or set the '
                 '`backend` attribute on the user.'
             )
-
+    # 这里的SESSION_KEY和middleware的session_key不一样，这里是一个固定的键值，可以直接理解为'user_id',里面保存user_id
+    # BACKEND_SESSION_KEY 保存session具体储存实现引擎如 'django.contrib.auth.backends.ModelBackend'
+    # HASH_SESSION_KEY 保存加盐密码的hash，如果用户密码更换了,就是依靠这个字段判断
     request.session[SESSION_KEY] = user._meta.pk.value_to_string(user)
     request.session[BACKEND_SESSION_KEY] = backend
     request.session[HASH_SESSION_KEY] = session_auth_hash

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from ctypes import POINTER, c_char_p, c_int, c_void_p
 
 from django.contrib.gis.gdal.libgdal import lgdal, std_call

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from copy import copy
 
 from django.conf import settings

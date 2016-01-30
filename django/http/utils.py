@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Functions that modify an HTTP request or response in some way.
 """

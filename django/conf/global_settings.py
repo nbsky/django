@@ -1,3 +1,4 @@
+# encoding: utf-8
 # -*- coding: utf-8 -*-
 """
 Default Django settings. Override these with settings in the module pointed to

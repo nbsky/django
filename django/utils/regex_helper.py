@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Functions for reversing a regular expression (used in reverse URL resolving).
 Used internally by Django and not intended for external use.

@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Python's datetime strftime doesn't handle dates before 1900.
 # These classes override date and datetime to support the formatting of a date
 # through its full "proleptic Gregorian" date range.

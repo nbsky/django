@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module houses ctypes interfaces for GDAL objects.  The following GDAL
  objects are supported:

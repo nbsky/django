@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  The GeometryColumns and SpatialRefSys models for the Oracle spatial
  backend.

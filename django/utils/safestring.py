@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Functions for working with "safe strings": strings that can be displayed safely
 without further escaping in HTML. Marking something as a "safe string" means

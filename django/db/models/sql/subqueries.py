@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Query subclasses which provide extra functionality beyond simple data retrieval.
 """

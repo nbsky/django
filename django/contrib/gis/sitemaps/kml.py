@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.apps import apps
 from django.contrib.gis.db.models.fields import GeometryField
 from django.contrib.sitemaps import Sitemap

@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This module houses the error-checking routines used by the GDAL
  ctypes prototypes.

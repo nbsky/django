@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.apps import AppConfig
 from django.contrib.contenttypes.checks import check_generic_foreign_keys
 from django.core import checks

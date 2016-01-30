@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Cache middleware. If enabled, each Django-powered page will be cached based on
 URL. The canonical way to enable cache middleware is to set

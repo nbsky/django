@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Classes to represent the definitions of aggregate functions.
 """

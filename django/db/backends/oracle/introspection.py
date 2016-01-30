@@ -1,3 +1,4 @@
+# encoding: utf-8
 import cx_Oracle
 
 from django.db.backends.base.introspection import (

@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
  This object provides quoting for GEOS geometries into PostgreSQL/PostGIS.
 """

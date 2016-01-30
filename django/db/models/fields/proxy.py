@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Field-like classes that aren't really fields. It's easier to use objects that
 have the same attributes as fields sometimes (avoids a lot of special casing).
