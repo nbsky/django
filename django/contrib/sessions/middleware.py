@@ -16,10 +16,10 @@ class SessionMiddleware(object):
     def process_request(self, request):
         #settings.SESSION_COOKIE_NAME cookies中保存的session的名字是可配置的默认是'sessionid'
         session_key = request.COOKIES.get(settings.SESSION_COOKIE_NAME)
+        #给request添加一个session实例属性,这时候session实例最重要的init只是从cookies得到sessionid,session信息只有第一次读取的时候才回加载
         request.session = self.SessionStore(session_key)
 
     def process_response(self, request, response):
-        print dict(request.session)
         """
         If request.session was modified, or if the configuration is to save the
         session every time, save the changes and set a session cookie or delete
@@ -48,6 +48,7 @@ class SessionMiddleware(object):
                     patch_vary_headers(response, ('Cookie',))
                 if (modified or settings.SESSION_SAVE_EVERY_REQUEST) and not empty:
                     # settings.SESSION_EXPIRE_AT_BROWSER_CLOSE 设置是否浏览器关闭session失效,如果是这样就没有过期时间了，因为关闭后seesion也就没了
+                    # 为什么要加入empty判断？因为如果设置了SESSION_SAVE_EVERY_REQUEST用户只要简单直接访问一个链接都会创建一条session(空会话)在数据库,形成DoS攻击，这个在1.8.4之后增加的
                     if request.session.get_expire_at_browser_close():
                         max_age = None
                         expires = None
@@ -59,6 +60,7 @@ class SessionMiddleware(object):
                     # Save the session data and refresh the client cookie.
                     # Skip session save for 500 responses, refs #3881.
                     if response.status_code != 500:
+                        # 真正保存持久化是这里，创建或者保存
                         request.session.save()
                         response.set_cookie(settings.SESSION_COOKIE_NAME,
                                 request.session.session_key, max_age=max_age,

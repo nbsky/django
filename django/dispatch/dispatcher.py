@@ -34,6 +34,8 @@ class Signal(object):
         receivers
             { receiverkey (id) : weakref(receiver) }
     """
+    # 观察者模式
+    # 使用弱引用，防止引用计数无法清零
     def __init__(self, providing_args=None, use_caching=False):
         """
         Create a new signal.
@@ -82,11 +84,13 @@ class Signal(object):
                 module will attempt to use weak references to the receiver
                 objects. If this parameter is false, then strong references will
                 be used.
+                默认尝试使用若引用来引用接受事件的对象，但是如果失败使用强引用
 
             dispatch_uid
                 An identifier used to uniquely identify a particular instance of
                 a receiver. This will usually be a string, though it may be
                 anything hashable.
+                使用一个唯一id标示接收对象
         """
         from django.conf import settings
 

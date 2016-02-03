@@ -38,6 +38,11 @@ class CommonMiddleware(object):
           the entire page content and Not Modified responses will be returned
           appropriately.
     """
+    # 主要功能:
+    # 禁止一些不想要的useragent访问
+    # 重写url,比如用户访问没有加www我们给它加
+    # 是否启用etag功能
+    # 感觉这些功能其实可以通过nginx处理效率更高
 
     response_redirect_class = http.HttpResponsePermanentRedirect
 
@@ -48,6 +53,7 @@ class CommonMiddleware(object):
         """
 
         # Check for denied User-Agents
+        # 通过设置useragent拒绝一些客户端类型
         if 'HTTP_USER_AGENT' in request.META:
             for user_agent_regex in settings.DISALLOWED_USER_AGENTS:
                 if user_agent_regex.search(request.META['HTTP_USER_AGENT']):
@@ -116,10 +122,13 @@ class CommonMiddleware(object):
                 return self.response_redirect_class(self.get_full_path_with_slash(request))
 
         if settings.USE_ETAGS:
+            # 启用了etag功能却没有这个header，就计算etag，etag其实就是计算body的md5而已
             if not response.has_header('ETag'):
                 set_response_etag(response)
 
             if response.has_header('ETag'):
+                # 有etag处理的逻辑就多了，要处理什么时候给浏览器内容，什么时候告诉浏览器读本地等情况
+                # 例如if_none_match etag 才发送网页，
                 return get_conditional_response(
                     request,
                     etag=unquote_etag(response['ETag']),

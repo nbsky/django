@@ -30,6 +30,7 @@ class View(object):
     """
     Intentionally simple parent class for all views. Only implements
     dispatch-by-method and simple sanity checking.
+    所有views的父类，最重要的是实现了get post等方法的调度
     """
 
     http_method_names = ['get', 'post', 'put', 'patch', 'delete', 'head', 'options', 'trace']
@@ -41,15 +42,38 @@ class View(object):
         """
         # Go through keyword arguments, and either save their values to our
         # instance, or raise an error.
+        # 把传入的参数（必须是原来类属性）不然会报错,最终是由as_view()传入，比如我们可以传入template_name="about.html
+        # 这样就不用在新建一个类
         for key, value in six.iteritems(kwargs):
             setattr(self, key, value)
 
+    """
+    函数式视图的缺点——难以扩展和自定义，开始显现出来。于是 1.3 起 django 开始用类视图来实现通用视图。较
+    于函数，类能够更方便的实现继承和 mixins。但类视图并非要取代函数视图，这从现在 URLConf 仍然保留着函数式的调用方式便可以看出来。
+
+    因为 URLConf 仍然使用“给一个可调用对象传入 HttpRequest ，并期待其返回一个 HttpResponse”这样的逻辑，所
+    以对于类视图，必须设计一个可调用的接口。这就是类视图的 as_view() 类方法。
+    他接受 request，并实例化类视图，接着调用实例的 dispatch() 方法。
+    这个方法会依据 request 的请求类型再去调用实例的对应同名方法，并把 request 传过去，如果没有对应的方法，
+    就引发一个 HttpResponseNotAllowed 异常。（可以捕捉这个异常用以返回一个 404）值得注意的是，
+    这个（比如 get）方法的返回值和普通的视图函数的返回值没有什么不同，这意味着，
+    http shortcuts（render_to_response之类的）和 TemplateResponse 在类视图里也是有效的。
+
+    django 提供了一系列现成的类视图，他们都继承自一个 View 基类（django.views.generic.base.View）。
+    在这个基类里实现了与 URLs 的接口（as_view）、请求方法匹配（dispatch）
+    和一些其他的基本功能。比如 RedirectView 实现了一个简单的 HTTP 重定向，TemplateView 给 View 添加了一个渲染模板的功能。
+
+    flask 事实上在后面的版本也借鉴了django这个方法加入了cbv
+    如果不用as_view可能需要这样写 view().dispatch()可能觉得不够优雅
+    """
     @classonlymethod
     def as_view(cls, **initkwargs):
         """
         Main entry point for a request-response process.
+        请求入口,其实就是实例化一个view，并且返回这个view的dispatch方法,因为url里面就是接受一个函数
         """
         for key in initkwargs:
+            # 参数不能是http的方法名，比如说不能是get,这里是用来替换属性的，如template_name="about.html",当然要是类的属性
             if key in cls.http_method_names:
                 raise TypeError("You tried to pass in the %s method name as a "
                                 "keyword argument to %s(). Don't do that."
@@ -60,6 +84,7 @@ class View(object):
                                 "attributes of the class." % (cls.__name__, key))
 
         def view(request, *args, **kwargs):
+            # 实例化一个view
             self = cls(**initkwargs)
             if hasattr(self, 'get') and not hasattr(self, 'head'):
                 self.head = self.get
@@ -70,7 +95,11 @@ class View(object):
         view.view_class = cls
         view.view_initkwargs = initkwargs
 
+        # update_wrapper 的作用
+        # 把后面的对象的__name__、module、__doc__和 __dict__ 拷贝到前面,一般用在修饰器消除__name__引起的debug困难
         # take name and docstring from class
+        # as_view返回的这个view就是一个函数所以有必要update_wrapper消除副作用
+        # view其实就是http方法映射实现：dispatch
         update_wrapper(view, cls, updated=())
 
         # and possible attributes set by decorators
@@ -78,10 +107,13 @@ class View(object):
         update_wrapper(view, cls.dispatch, assigned=())
         return view
 
+    # 这个是配置url时候最终的入口，传入一个request对象,返回一个对应http方法的函数，如get()
+    # 也就是根据request在返回一个对应的函数
     def dispatch(self, request, *args, **kwargs):
         # Try to dispatch to the right method; if a method doesn't exist,
         # defer to the error handler. Also defer to the error handler if the
         # request method isn't on the approved list.
+        # 这个类中我们看不到任何的get post等方法，但是却可以调度在于使用了getattr这种动态的方式从字符串动态匹配方法
         if request.method.lower() in self.http_method_names:
             handler = getattr(self, request.method.lower(), self.http_method_not_allowed)
         else:
@@ -100,6 +132,8 @@ class View(object):
     def options(self, request, *args, **kwargs):
         """
         Handles responding to requests for the OPTIONS HTTP verb.
+        询问服务器支持的方法，比如说支持get，就在allow header返回get,options不用返回header
+        这个不像get，post和业务相关，所以在这个父类实现。
         """
         response = http.HttpResponse()
         response['Allow'] = ', '.join(self._allowed_methods())
@@ -113,9 +147,11 @@ class View(object):
 class TemplateResponseMixin(object):
     """
     A mixin that can be used to render a template.
+    混入模板渲染功能的mixin加进view可以组成出有模板渲染能力的view
     """
     template_name = None
     template_engine = None
+    # 核心在这里，我们加入了一个渲染类,我们使用的时候就只要配置这个类即可
     response_class = TemplateResponse
     content_type = None
 
@@ -162,6 +198,7 @@ class TemplateView(TemplateResponseMixin, ContextMixin, View):
 class RedirectView(View):
     """
     A view that provides a redirect on any GET request.
+    用来处理重定向的view
     """
     permanent = False
     url = None
@@ -204,6 +241,7 @@ class RedirectView(View):
                         })
             return http.HttpResponseGone()
 
+    # 无论接受什么方法最终用get处理重定向
     def head(self, request, *args, **kwargs):
         return self.get(request, *args, **kwargs)
 

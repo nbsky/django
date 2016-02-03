@@ -14,12 +14,14 @@ def get_user(request):
 
 class AuthenticationMiddleware(object):
     def process_request(self, request):
+        # 依赖session中间件
         assert hasattr(request, 'session'), (
             "The Django authentication middleware requires session middleware "
             "to be installed. Edit your MIDDLEWARE_CLASSES setting to insert "
             "'django.contrib.sessions.middleware.SessionMiddleware' before "
             "'django.contrib.auth.middleware.AuthenticationMiddleware'."
         )
+        #SimpleLazyObject防止马上实例化，防止触发io,比如去数据库查找
         request.user = SimpleLazyObject(lambda: get_user(request))
 
 

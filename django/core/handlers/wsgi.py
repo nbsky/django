@@ -81,7 +81,7 @@ class LimitedStream(object):
 
 class WSGIRequest(http.HttpRequest):
     """
-        init实现了wsgi的environ对 request的数据填充
+        init实现了wsgi把environ的数据填进 request对象
     """
     def __init__(self, environ):
         script_name = get_script_name(environ)
@@ -199,6 +199,7 @@ class WSGIHandler(base.BaseHandler):
             response_headers.append((str('Set-Cookie'), str(c.output(header=''))))
         #wsgi第一步:实现了包含http状态码和header两个参数的函数调用完成了wsgi的其中一步
         start_response(force_str(status), response_headers)
+        # TODO是文件流要特殊处理,具体如何处理
         if getattr(response, 'file_to_stream', None) is not None and environ.get('wsgi.file_wrapper'):
             response = environ['wsgi.file_wrapper'](response.file_to_stream)
         #wsgi第二步:返回可迭代body

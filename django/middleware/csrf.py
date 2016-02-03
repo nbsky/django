@@ -125,6 +125,7 @@ class CsrfViewMiddleware(object):
             return None
 
         # Assume that anything not defined as 'safe' by RFC2616 needs protection
+        # 'GET', 'HEAD', 'OPTIONS', 'TRACE'这几个方法不需要进行防csrf
         if request.method not in ('GET', 'HEAD', 'OPTIONS', 'TRACE'):
             if getattr(request, '_dont_enforce_csrf_checks', False):
                 # Mechanism to turn off CSRF checks for test suite.
@@ -211,6 +212,7 @@ class CsrfViewMiddleware(object):
             if request_csrf_token == "":
                 # Fall back to X-CSRFToken, to make things easier for AJAX,
                 # and possible for PUT/DELETE.
+                # 如果是AJAX请求，js需要自己读取cookies中的csrftoken字段放到csrf header里面j
                 request_csrf_token = request.META.get(settings.CSRF_HEADER_NAME, '')
 
             if not constant_time_compare(request_csrf_token, csrf_token):
@@ -227,6 +229,7 @@ class CsrfViewMiddleware(object):
 
         # Set the CSRF cookie even if it's already set, so we renew
         # the expiry timer.
+        # 即便是cookies已经有了csrftoken字段我们也继续种，这样可以更新过期时间
         response.set_cookie(settings.CSRF_COOKIE_NAME,
                             request.META["CSRF_COOKIE"],
                             max_age=settings.CSRF_COOKIE_AGE,
@@ -236,6 +239,7 @@ class CsrfViewMiddleware(object):
                             httponly=settings.CSRF_COOKIE_HTTPONLY
                             )
         # Content varies with the CSRF cookie, so set the Vary header.
+        # cookies变化，所以要告知缓存中间节点cookie列为缓存标示因子
         patch_vary_headers(response, ('Cookie',))
         response.csrf_processing_done = True
         return response

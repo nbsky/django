@@ -19,6 +19,8 @@ def curry(_curried_func, *args, **kwargs):
 
 class cached_property(object):
     """
+    class式的修饰器同时也是一个描述器,访问属性的时候执行,而不像修饰器import就会执行,因为没有定义__call__
+
     Decorator that converts a method with a single self argument into a
     property cached on the instance.
 
@@ -241,9 +243,11 @@ class LazyObject(object):
     """
     A wrapper for another class that can be used to delay instantiation of the
     wrapped class.
+    作用是延迟一个类的实例化
 
     By subclassing, you have the opportunity to intercept and alter the
     instantiation. If you don't need to do that, use SimpleLazyObject.
+    如果不需要拦截修改实例化过程可以使用SimpleLazyObject
     """
 
     # Avoid infinite recursion when tracing __init__ (#19456).

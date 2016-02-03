@@ -57,6 +57,7 @@ def _clean_credentials(credentials):
 def _get_user_session_key(request):
     # This value in the session is always serialized to a string, so we need
     # to convert it back to Python whenever we access it.
+    # 服务端session保存着userid
     return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
 
 
@@ -182,19 +183,27 @@ def get_user(request):
     """
     Returns the user model instance associated with the given request session.
     If no user is retrieved an instance of `AnonymousUser` is returned.
+    从用户内存session中取到userid，根据userid从储存取到密码hash和内存session中的hash密码对比通过
+    返回user对象，不对则返回AnonymousUser
+
+    根据userid获取user对象是可以定制的，在AUTHENTICATION_BACKENDS配置
     """
     from .models import AnonymousUser
     user = None
     try:
+        # 从session中获取userid
         user_id = _get_user_session_key(request)
+        # backend_path是session具体实现的引擎,如db引擎
         backend_path = request.session[BACKEND_SESSION_KEY]
     except KeyError:
         pass
     else:
+        # userid->user对象 的方法是可以自定义的
         if backend_path in settings.AUTHENTICATION_BACKENDS:
             backend = load_backend(backend_path)
             user = backend.get_user(user_id)
             # Verify the session
+            # 校验session，其实就是校验内存里session里面的密码hash有没有和储存里面的一样
             if hasattr(user, 'get_session_auth_hash'):
                 session_hash = request.session.get(HASH_SESSION_KEY)
                 session_hash_verified = session_hash and constant_time_compare(

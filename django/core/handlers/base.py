@@ -108,7 +108,7 @@ class BaseHandler(object):
 
     def get_response(self, request):
         "Returns an HttpResponse object for the given HttpRequest"
-
+        # 这个方法其实就是整个django的执行流程"
         # Setup default url resolver for this thread, this code is outside
         # the try/except so we don't get a spurious "unbound local
         # variable" exception in the event an exception is raised before

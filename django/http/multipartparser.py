@@ -64,6 +64,8 @@ class MultiPartParser(object):
         :encoding:
             The encoding with which to treat the incoming data.
         """
+        # 是这个样的
+        # Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryweYiMAdsKmqlTSAf
 
         #
         # Content-Type should contain multipart and the boundary information.
@@ -76,6 +78,7 @@ class MultiPartParser(object):
         # Parse the header to get the boundary to split the parts.
         ctypes, opts = parse_header(content_type.encode('ascii'))
         boundary = opts.get('boundary')
+        # Content-Type 使用 multipart 时必须制定分割符 boundary
         if not boundary or not cgi.valid_boundary(boundary):
             raise MultiPartParserError('Invalid boundary in multipart: %s' % boundary)
 

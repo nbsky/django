@@ -60,6 +60,7 @@ class Command(BaseCommand):
             )
 
         # Make sure the app they asked for exists
+        # 确认app存在
         app_labels = set(app_labels)
         bad_app_labels = set()
         for app_label in app_labels:

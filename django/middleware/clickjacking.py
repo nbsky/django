@@ -27,6 +27,12 @@ class XFrameOptionsMiddleware(object):
 
     https://en.wikipedia.org/wiki/Clickjacking#Server_and_client
     """
+    # 点击劫持攻击：比如说flash控件通过点击可以打开摄像头，攻击者可以嵌套iframe让用户去点击
+    # X-Frame-Options是微软提出的一个http头,可以设置一些选项告知浏览器要不要允许前端对次请求使用iframe.
+    # 1)DENY:拒绝任何域加载
+    # 2)SAMEORIGIN:允许同源域下加载
+    # 3)ALLOW-FROM:可以定义允许frame加载的页面地址
+
     def process_response(self, request, response):
         # Don't set it if it's already in the response
         if response.get('X-Frame-Options') is not None:

@@ -344,6 +344,7 @@ class AbstractUser(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _('user')
         verbose_name_plural = _('users')
+        # 不会创建表
         abstract = True
 
     def get_full_name(self):

@@ -43,23 +43,29 @@ class SessionBase(object):
         self.serializer = import_string(settings.SESSION_SERIALIZER)
 
     def __contains__(self, key):
+        # 这是为什么session对象可以像dict一样进行：`key in session` 的奥秘
         return key in self._session
 
     def __getitem__(self, key):
+        # 这是为什么session对象可以像dict一样进行：`value = session[key]` 的奥秘
         return self._session[key]
 
     def __setitem__(self, key, value):
+        # 这是为什么session对象可以像dict一样进行：`session[key] = value` 的奥秘
         self._session[key] = value
         self.modified = True
 
     def __delitem__(self, key):
+        # 这是为什么session对象可以像dict一样进行：`del session[key]` 的奥秘
         del self._session[key]
         self.modified = True
 
     def get(self, key, default=None):
+        # 这是为什么session对象可以像dict一样进行：`session.get(key, default)` 的奥秘
         return self._session.get(key, default)
 
     def pop(self, key, default=None):
+        # .......
         self.modified = self.modified or key in self._session
         return self._session.pop(key, default)
 
@@ -145,6 +151,7 @@ class SessionBase(object):
 
     def is_empty(self):
         "Returns True when there is no session_key and the session is empty"
+
         try:
             return not bool(self._session_key) and not self._session_cache
         except AttributeError:
