@@ -19,7 +19,7 @@ def curry(_curried_func, *args, **kwargs):
 
 class cached_property(object):
     """
-    class式的修饰器同时也是一个描述器,访问属性的时候执行,而不像修饰器import就会执行,因为没有定义__call__
+    描述器
 
     Decorator that converts a method with a single self argument into a
     property cached on the instance.

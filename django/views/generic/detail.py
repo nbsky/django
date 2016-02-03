@@ -20,12 +20,19 @@ class SingleObjectMixin(ContextMixin):
     pk_url_kwarg = 'pk'
     query_pk_and_slug = False
 
+
+    # 默认会被get()调用
+    # 默认get_queryset方法
     def get_object(self, queryset=None):
         """
         Returns the object the view is displaying.
 
         By default this requires `self.queryset` and a `pk` or `slug` argument
         in the URLconf, but subclasses can override this to return any object.
+        pk 和 slug都可以在url正则配置，url调度会默认把这两个指传入kwargs里面，
+        而view默认使用这两个，查找数据，有时候用pk唯一一条数据不是很方便，比如数据库不一样id不一样，
+        slug可以作为唯一键字段，比pk更灵活
+        这里 queryset 和 pk 和slug是串行的，通常我们只设置一个就够了
         """
         # Use a custom queryset if provided; this is required for subclasses
         # like DateDetailView
@@ -63,6 +70,7 @@ class SingleObjectMixin(ContextMixin):
 
         Note that this method is called by the default implementation of
         `get_object` and may not be called if `get_object` is overridden.
+        这个方法默认会被get_object调用，如果get_object被重写可能就不会被调用了
         """
         if self.queryset is None:
             if self.model:
@@ -80,6 +88,7 @@ class SingleObjectMixin(ContextMixin):
     def get_slug_field(self):
         """
         Get the name of a slug field to be used to look up by slug.
+        除了pk也可以使用slug标示一条记录，我们更方便的处理不同数据库环境的数据保持唯一键一致
         """
         return self.slug_field
 
@@ -113,6 +122,10 @@ class SingleObjectMixin(ContextMixin):
 class BaseDetailView(SingleObjectMixin, View):
     """
     A base view for displaying a single object
+    用来展示单个对象详情的view，比如我们实现某个用户的信息详情页
+    最核心的就是他默认会调用get_object方法来想数据库查找单个对象
+    但是查找条件呢？
+    view中默认是先查找pk，再查找slug，我们需要在url正则中配置这两个字段
     """
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()

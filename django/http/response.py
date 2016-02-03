@@ -419,6 +419,12 @@ class HttpResponseRedirectBase(HttpResponse):
         super(HttpResponseRedirectBase, self).__init__(*args, **kwargs)
         self['Location'] = iri_to_uri(redirect_to)
 
+    """
+    等价于这个
+    @property
+    def url(self):
+        return self['Location']
+    """
     url = property(lambda self: self['Location'])
 
     def __repr__(self):
@@ -431,16 +437,23 @@ class HttpResponseRedirectBase(HttpResponse):
 
 
 class HttpResponseRedirect(HttpResponseRedirectBase):
+    # 临时重定向
     status_code = 302
 
 
 class HttpResponsePermanentRedirect(HttpResponseRedirectBase):
+    # 永久重定向
+    # 比如用户http://letv.com/user/1 少加/
+    # 需要被永久定向的http://letv.com/user/1/ 对于浏览器他就知道下次应该访问后者，对应的资源都应该这样处理
+    # 浏览器甚至有必要更改他的书签
     status_code = 301
 
 
 class HttpResponseNotModified(HttpResponse):
     status_code = 304
 
+    # 304告诉客户端没有修改，只会返回一个header，因为没有修改，客户端直接用本地的缓存数据即可
+    # 因为不会发送body 所以删除掉content-type
     def __init__(self, *args, **kwargs):
         super(HttpResponseNotModified, self).__init__(*args, **kwargs)
         del self['content-type']
@@ -457,6 +470,7 @@ class HttpResponseBadRequest(HttpResponse):
 
 
 class HttpResponseNotFound(HttpResponse):
+    # 资源不存在
     status_code = 404
 
 

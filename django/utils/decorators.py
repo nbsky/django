@@ -10,9 +10,11 @@ from functools import WRAPPER_ASSIGNMENTS, update_wrapper, wraps
 
 from django.utils import six
 
-
+# 通过描述器对类属性进行行为监控，当本类修饰一个类属性时，访问类属性会进入__get__,这里他继承了classmethod，
+# 是指修饰的属性变为一个类方法，同时只能被类访问
 class classonlymethod(classmethod):
     def __get__(self, instance, cls=None):
+        # instance 非空说明被实例过
         if instance is not None:
             raise AttributeError("This method is available only on the class, not on instances.")
         return super(classonlymethod, self).__get__(instance, cls)

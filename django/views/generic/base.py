@@ -66,6 +66,8 @@ class View(object):
     flask 事实上在后面的版本也借鉴了django这个方法加入了cbv
     如果不用as_view可能需要这样写 view().dispatch()可能觉得不够优雅
     """
+
+    #classonlymethod继承自classmethod，所以下面是个类方法，同时重写__get__对类是否实例监控
     @classonlymethod
     def as_view(cls, **initkwargs):
         """
@@ -84,6 +86,7 @@ class View(object):
                                 "attributes of the class." % (cls.__name__, key))
 
         def view(request, *args, **kwargs):
+            # url正则匹配出来的数据会传入，args kwargs
             # 实例化一个view
             self = cls(**initkwargs)
             if hasattr(self, 'get') and not hasattr(self, 'head'):
@@ -230,8 +233,13 @@ class RedirectView(View):
         url = self.get_redirect_url(*args, **kwargs)
         if url:
             if self.permanent:
+                # 永久重定向
+                # 比如用户http://letv.com/user/1 少加/
+                # 需要被永久定向的http://letv.com/user/1/ 对于浏览器他就知道下次应该访问后者，对应的资源都应该这样处理
+                # 浏览器甚至有必要更改他的书签
                 return http.HttpResponsePermanentRedirect(url)
             else:
+                # 默认302临时重定向
                 return http.HttpResponseRedirect(url)
         else:
             logger.warning('Gone: %s', request.path,

@@ -66,7 +66,11 @@ def _get_queryset(klass):
     get_object_or_404 and get_list_or_404 more DRY.
 
     Raises a ValueError if klass is not a Model, Manager, or QuerySet.
+    Model的objects其实是一个Manager，当我们调用Model.objects.all()时，其实是Manager的get调用
+    Queryset的get，Manager其实是Queryset的一个代理，最终get是Queryset的方法，返回的也是Queryset
+
     """
+    # get方法本来就是QuerySet
     if isinstance(klass, QuerySet):
         return klass
     elif isinstance(klass, Manager):
@@ -93,7 +97,14 @@ def get_object_or_404(klass, *args, **kwargs):
 
     Note: Like with get(), an MultipleObjectsReturned will be raised if more than one
     object is found.
+
+    用来判断一个对象是否存在，其实就是User.objects.get()方法的通用版本
+    没找到和找到多个都会抛出异常的
+
+    usage:
+        pk = get_object_or_404(User, pk=1)
     """
+    # 从一个Model获取queryset 相当于获取他的object 在获取他的queryset
     queryset = _get_queryset(klass)
     try:
         return queryset.get(*args, **kwargs)

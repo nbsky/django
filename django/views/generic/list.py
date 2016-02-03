@@ -13,10 +13,12 @@ from django.views.generic.base import ContextMixin, TemplateResponseMixin, View
 class MultipleObjectMixin(ContextMixin):
     """
     A mixin for views manipulating multiple objects.
+    用来处理多个object的mixin，比如可以混入一个需要展现list的view
     """
     allow_empty = True
     queryset = None
     model = None
+    # 既然是多个就涉及分页问题
     paginate_by = None
     paginate_orphans = 0
     context_object_name = None
