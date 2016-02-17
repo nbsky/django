@@ -38,7 +38,9 @@ class SessionBase(object):
 
     def __init__(self, session_key=None):
         self._session_key = session_key
+        # 是否访问过标记
         self.accessed = False
+        # 是否修改过标记
         self.modified = False
         self.serializer = import_string(settings.SESSION_SERIALIZER)
 

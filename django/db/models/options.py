@@ -309,6 +309,10 @@ class Options(object):
         Return True if the model can/should be migrated on the `connection`.
         `connection` can be either a real connection or a connection alias.
         """
+        # meta以下这三种情况的不创建表
+        # 1.proxy在django里面有model类，但是不会创建表
+        # 2.managed一般是表是由于其他系统创建，不需要给django管理迁移
+        # 3.
         if self.proxy or self.swapped or not self.managed:
             return False
         if isinstance(connection, six.string_types):

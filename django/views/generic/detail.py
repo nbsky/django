@@ -11,8 +11,12 @@ from django.views.generic.base import ContextMixin, TemplateResponseMixin, View
 class SingleObjectMixin(ContextMixin):
     """
     Provides the ability to retrieve a single object for further manipulation.
+    提供的默认行为就是，通过url正则传入的pk或者slug，从queryset model这些基础配置信息中
+    在get方法里面查找单挑数据
     """
+    # 比如model = User
     model = None
+    # 比如queryset = User.objects.all()
     queryset = None
     slug_field = 'slug'
     context_object_name = None
@@ -36,21 +40,25 @@ class SingleObjectMixin(ContextMixin):
         """
         # Use a custom queryset if provided; this is required for subclasses
         # like DateDetailView
+        # 优先选择queryset属性配置，如果没有更加model生成queryset
         if queryset is None:
             queryset = self.get_queryset()
 
         # Next, try looking up by primary key.
         pk = self.kwargs.get(self.pk_url_kwarg)
         slug = self.kwargs.get(self.slug_url_kwarg)
+        # 加入pk where语句
         if pk is not None:
             queryset = queryset.filter(pk=pk)
 
         # Next, try looking up by slug.
+        # 如果有slug继续加入slug 查找条件,也可以同时使用pk和slug
         if slug is not None and (pk is None or self.query_pk_and_slug):
             slug_field = self.get_slug_field()
             queryset = queryset.filter(**{slug_field: slug})
 
         # If none of those are defined, it's an error.
+        # url正郑一定要有pk或者slug这种参数的否则报错
         if pk is None and slug is None:
             raise AttributeError("Generic detail view %s must be called with "
                                  "either an object pk or a slug."
@@ -71,6 +79,9 @@ class SingleObjectMixin(ContextMixin):
         Note that this method is called by the default implementation of
         `get_object` and may not be called if `get_object` is overridden.
         这个方法默认会被get_object调用，如果get_object被重写可能就不会被调用了
+        根据model属性获取queryset
+
+        pk或者slug默认从queryset属性里面查找，如果没有这个数据就靠这个方法从model属性生成queryset
         """
         if self.queryset is None:
             if self.model:
@@ -108,6 +119,7 @@ class SingleObjectMixin(ContextMixin):
     def get_context_data(self, **kwargs):
         """
         Insert the single object into the context dict.
+        从获取的object插入context，也就完成了从数据库到模板的数据传递
         """
         context = {}
         if self.object:
@@ -121,6 +133,8 @@ class SingleObjectMixin(ContextMixin):
 
 class BaseDetailView(SingleObjectMixin, View):
     """
+    给基本View组合上获取单个数据对象的能力，并实现基本view的get方法，调用这个能力
+
     A base view for displaying a single object
     用来展示单个对象详情的view，比如我们实现某个用户的信息详情页
     最核心的就是他默认会调用get_object方法来想数据库查找单个对象
@@ -128,8 +142,11 @@ class BaseDetailView(SingleObjectMixin, View):
     view中默认是先查找pk，再查找slug，我们需要在url正则中配置这两个字段
     """
     def get(self, request, *args, **kwargs):
+        # 获取单条数据行
         self.object = self.get_object()
+        # 传入给模板的变量
         context = self.get_context_data(object=self.object)
+        # render_to_response这个方法只能mixin具有这个方法的类使用?,这个方法在view和SingleObjectMixin中并没有
         return self.render_to_response(context)
 
 

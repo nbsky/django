@@ -24,6 +24,12 @@ class Storage(object):
     """
     A base storage class, providing some default behaviors that all other
     storage systems can inherit or override, as necessary.
+    文件类型的字段都要配置storage，比如读写其实是和储存相关的行为，默认是使用FileSystemStorage以web服务器的web目录
+    读写
+    如果你要实现一些不在web服务器读写的操作你可以自己编写storage
+    比如，你的文件是在ftp，你可以继承本类，然后写一些open save的方法,然后filefield()指定storage为ftpstorage
+    作为filefield，和imagefield并不关心具体存在哪里，他只需要关系如何取到他要的，比如文件的url，文件的名字
+    再举个例子，七牛cdn的django插件，就是自己写了个storage
     """
 
     # The following methods represent a public interface to private methods.
@@ -135,6 +141,7 @@ class Storage(object):
         """
         Returns an absolute URL where the file's contents can be accessed
         directly by a Web browser.
+        比如一个imagefield 在实际访问的时候会访问这个url
         """
         raise NotImplementedError('subclasses of Storage must provide a url() method')
 

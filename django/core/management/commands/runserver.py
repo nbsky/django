@@ -63,6 +63,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         from django.conf import settings
 
+        # 非调试模式要求一定得设置白名单
         if not settings.DEBUG and not settings.ALLOWED_HOSTS:
             raise CommandError('You must set settings.ALLOWED_HOSTS if DEBUG is False.')
 
