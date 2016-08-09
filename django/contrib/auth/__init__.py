@@ -65,6 +65,7 @@ def authenticate(**credentials):
     """
     If the given credentials are valid, return a User object.
     """
+    # 调用 settings.AUTHENTICATION_BACKENDS 里面配置的backend的里面的authenticate, 只要一个成功就返回user
     for backend, backend_path in _get_backends(return_tuples=True):
         try:
             inspect.getcallargs(backend.authenticate, **credentials)
@@ -102,7 +103,7 @@ def login(request, user, backend=None):
 
     # session已经保存了用户id,当然这里不能保证是当前用户的用户id，
     # 如果是当前用户id，密码也可能已经变了,这两种情况都彻底清空session
-    # 这里的hSESSION_KEY是session中user_id的键值
+    # 这里的SESSION_KEY是session中user_id的键值
     if SESSION_KEY in request.session:
         if _get_user_session_key(request) != user.pk or (
                 session_auth_hash and
@@ -169,6 +170,7 @@ def get_user_model():
     """
     Returns the User model that is active in this project.
     """
+
     try:
         return django_apps.get_model(settings.AUTH_USER_MODEL)
     except ValueError:
@@ -185,7 +187,6 @@ def get_user(request):
     If no user is retrieved an instance of `AnonymousUser` is returned.
     从用户内存session中取到userid，根据userid从储存取到密码hash和内存session中的hash密码对比通过
     返回user对象，不对则返回AnonymousUser
-
     根据userid获取user对象是可以定制的，在AUTHENTICATION_BACKENDS配置
     """
     from .models import AnonymousUser
@@ -199,6 +200,9 @@ def get_user(request):
         pass
     else:
         # userid->user对象 的方法是可以自定义的
+        # 调用 settings.AUTHENTICATION_BACKENDS 里面配置的backend的里面的get_user, 只要一个成功就返回user
+        # 比如 django.contrib.auth.middleware.AuthenticationMiddleware 会把这个函数转为request.user
+        # user_id 就是从session取得
         if backend_path in settings.AUTHENTICATION_BACKENDS:
             backend = load_backend(backend_path)
             user = backend.get_user(user_id)

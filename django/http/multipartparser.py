@@ -263,6 +263,7 @@ class MultiPartParser(object):
             if retval:
                 break
 
+        # _post是一个QueryDict, 本质上是一个dict， 如果有文件会放到_files
         return self._post, self._files
 
     def handle_file_complete(self, old_field_name, counters):

@@ -48,6 +48,8 @@ def login_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login
         login_url=login_url,
         redirect_field_name=redirect_field_name
     )
+
+    # 可以兼容login_required传参与不传参的两种形式
     if function:
         return actual_decorator(function)
     return actual_decorator

@@ -210,6 +210,7 @@ class HttpRequest(object):
 
     def is_ajax(self):
         #X-Requested-With是jQuery发送ajax请求自己加上去的自定义header没有在rfc
+        #xadmin 中有根据这个方法来修改response为json，复用同一个接口实现html同步和ajax的请求
         return self.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
     @property

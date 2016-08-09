@@ -19,7 +19,7 @@ def curry(_curried_func, *args, **kwargs):
 
 class cached_property(object):
     """
-    描述器
+    通过描述器讲数据挂载到宿主类的实例的__dict__,下次访问会直接通过__dict__,而不会在进__get__
 
     Decorator that converts a method with a single self argument into a
     property cached on the instance.
