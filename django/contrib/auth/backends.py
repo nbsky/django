@@ -11,6 +11,7 @@ class ModelBackend(object):
     """
 
     def authenticate(self, username=None, password=None, **kwargs):
+        # 在业务代码中也应当使用get_user_model这种方式获取，当然使用之前需要在setings配置自己的user models
         UserModel = get_user_model()
         if username is None:
             username = kwargs.get(UserModel.USERNAME_FIELD)
